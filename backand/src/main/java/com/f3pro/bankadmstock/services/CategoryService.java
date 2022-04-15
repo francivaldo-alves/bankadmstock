@@ -36,6 +36,7 @@ public class CategoryService {
 
     // atualizar uma categoria
     public Category update(Category category, Long id){
+        
         category.setId(id);
         return repository.save(category);
 
