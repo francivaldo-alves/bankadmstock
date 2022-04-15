@@ -23,13 +23,13 @@ public class CategoryService {
     }
 
     // listar por ID
-    public Optional<Category> findById(Long id){
+    public Category findById(Long id){
         Optional<Category> obj = repository.findById(id);
-        return obj;
+        return obj.get();
 
     }
     //Criar um categoria
-    public Category  create(Category category){
+    public Category create(Category category){
 
         return repository.save(category);
     }

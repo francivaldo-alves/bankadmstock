@@ -22,9 +22,9 @@ public class ProductsService {
     }
 
     // listar por ID
-    public Optional<Products> findById(Long id) {
+    public Products findById(Long id) {
         Optional<Products> obj = repository.findById(id);
-        return obj;
+        return obj.get();
     }
 
     //criar um novo produto
