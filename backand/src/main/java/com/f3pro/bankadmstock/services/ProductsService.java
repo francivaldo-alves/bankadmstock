@@ -3,6 +3,8 @@ package com.f3pro.bankadmstock.services;
 import java.util.List;
 import java.util.Optional;
 
+
+import com.f3pro.bankadmstock.exceptions.ResourceNotFoundException;
 import com.f3pro.bankadmstock.entities.Products;
 import com.f3pro.bankadmstock.repositories.ProductsRepository;
 
@@ -24,7 +26,7 @@ public class ProductsService {
     // listar por ID
     public Products findById(Long id) {
         Optional<Products> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new  ResourceNotFoundException( id));
     }
 
     //criar um novo produto
@@ -39,9 +41,9 @@ public class ProductsService {
         return repository.save(products);
     }
 
-    //deletar um produto por ID
-    public void deleteById(Long id){
-        
+    //deletar a categoria por ID.
+    public void delete(Long id){
+
         repository.deleteById(id);
     }
 }

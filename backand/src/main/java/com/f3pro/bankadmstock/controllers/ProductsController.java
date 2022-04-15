@@ -3,8 +3,9 @@ package com.f3pro.bankadmstock.controllers;
 import java.net.URI;
 import java.util.List;
 
-import com.f3pro.bankadmstock.entities.Category;
-import com.f3pro.bankadmstock.services.CategoryService;
+import com.f3pro.bankadmstock.entities.Products;
+import com.f3pro.bankadmstock.services.ProductsService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,37 +20,37 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping({ "/caregories" })
-public class CategoryController {
+@RequestMapping({ "/products" })
+public class ProductsController {
 
     @Autowired
-    private CategoryService service;
+    private ProductsService service;
 
     @GetMapping
-    public ResponseEntity<List<Category>> findAll() {
-        List<Category> list = service.findAll();
+    public ResponseEntity<List<Products>> findAll() {
+        List<Products> list = service.findAll();
         return ResponseEntity.ok().body(list);
 
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id) {
-        Category list = service.findById(id);
+        Products list = service.findById(id);
         return ResponseEntity.ok().body(list);
     }
 
     @PostMapping
-    public ResponseEntity<Category> create(@RequestBody Category category) {
-        category = service.create(category);
+    public ResponseEntity<Products> create(@RequestBody Products products) {
+        products = service.create(products);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")
-                .buildAndExpand(category.getId()).toUri();
-        return ResponseEntity.created(uri).body(category);
+                .buildAndExpand(products.getId()).toUri();
+        return ResponseEntity.created(uri).body(products);
 
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Category> update(@RequestBody Category category, @PathVariable Long id){
-        category= service.update(category, id);
+    public ResponseEntity<Products> update(@RequestBody Products Products, @PathVariable Long id){
+        Products= service.update(Products, id);
         return ResponseEntity.noContent().build();
 
     }

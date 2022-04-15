@@ -3,6 +3,8 @@ package com.f3pro.bankadmstock.services;
 import java.util.List;
 import java.util.Optional;
 
+
+import com.f3pro.bankadmstock.exceptions.ResourceNotFoundException;
 import com.f3pro.bankadmstock.entities.Category;
 import com.f3pro.bankadmstock.repositories.CategoryRepository;
 
@@ -25,7 +27,9 @@ public class CategoryService {
     // listar por ID
     public Category findById(Long id){
         Optional<Category> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new  ResourceNotFoundException( id));
+
+
 
     }
     //Criar um categoria
