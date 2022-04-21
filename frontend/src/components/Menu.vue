@@ -2,7 +2,9 @@
   <div class="conteudo">
     <ul>
       <router-link to="/">
-        <li>Home</li>
+        <li>
+          <img src="./../assets/fullstack.png" width="80" alt="curse fulstack">
+        </li>
       </router-link>
 
       <router-link to="/about">
@@ -24,5 +26,21 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss" scoped>
+.conteudo{
+  ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    li{
+      margin-left: 1%;
+      width: 100px;
+
+
+
+    }
+  }
+}
+
 </style>
